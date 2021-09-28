@@ -4,7 +4,7 @@ pp12021g1_a1-pp12021g1_a1 created by GitHub Classroom
 
 - - - - - - - - I N T E G R A N T E S - - - - - - - - 
 
-- cANAAN, ABIGAIL SARA
+- CANAAN, ABIGAIL SARA
 - PAJON, MONICA
 -
 -
