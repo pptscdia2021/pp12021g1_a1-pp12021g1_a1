@@ -42,4 +42,6 @@ for fila in tabla.find_all("tr"):
 
 
 
-datos= pd.read_csv 
+datos= pd.read_csv('bolsa_madrid.csv')
+print(datos)
+
