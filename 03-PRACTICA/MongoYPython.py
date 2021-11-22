@@ -22,4 +22,5 @@ with open('./03-PRACTICA/SQL practica/weatherHistory.csv', newline='') as finput
         except:
             pass
 
+'Imprimir.'
 print('Se insertaron: ', collection.count(), 'registros a la coleccion')
