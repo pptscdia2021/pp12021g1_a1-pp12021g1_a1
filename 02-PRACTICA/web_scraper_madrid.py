@@ -21,7 +21,15 @@ tabla = soup.find('table', attrs={'id': 'ctl00_Contenido_tblAcciones'})
 
 name=""
 price=""
+Max_=""
+Min_=""
+Fecha=""
 nroFila=0
+df = pd.DataFrame(columns=["Nombre","Dif", "Max", "Min", "Fecha"])
+carpeta = '~/Documentos/CSDATOS-PYTHON/pp12021g1_a1-pp12021g1_a1/02-PRACTICA/scraper-bolsa_madrid.csv'
+
+
+
 for fila in tabla.find_all("tr"):
     #for row in  tabla.find_all("td")::
     nroCelda=0
@@ -32,16 +40,23 @@ for fila in tabla.find_all("tr"):
         if nroCelda==2:
             price=celda.text
             print("Valor:", price)
+        if nroCelda==3:
+            Max_=celda.text
+            print("Max.:", Max_)
+        if nroCelda==4:
+            Min_=celda.text
+            print("Min.:", Min_)
+        if nroCelda==7:
+            Fecha=celda.text
+            print("Fecha:", Fecha)
         nroCelda=nroCelda+1
     nroFila=nroFila+1
+    if nroFila>1:   
+        df = df.append({'Nombre':name, 'Dif':price, 'Max':Max_,'Min':Min_, 'Fecha': datetime.now()}, ignore_index=True)
     # Abrimos el csv con append para que pueda agregar contenidos al final del archivo
-    with open('bolsa_madrid.csv', 'a') as csv_file:
-        writer = csv.writer(csv_file)
-        writer.writerow([name, price, datetime.now()])
+    df.to_csv(carpeta)
 
 
 
 
-datos= pd.read_csv('bolsa_madrid.csv')
-print(datos)
 
