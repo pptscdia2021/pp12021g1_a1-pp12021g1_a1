@@ -9,7 +9,7 @@ class Yahoofinance():
     def __init__(self, acciones ):
         self.acciones = acciones
         
-    def yfinanceScraper(accion): 
+    def yfinanceScraper(self, accion): 
         Accion = yf.Ticker(accion)
         print(Accion.info) 
 
