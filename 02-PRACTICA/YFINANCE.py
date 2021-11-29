@@ -1,27 +1,43 @@
 import yfinance as yf
 import numpy as np
-
+import matplotlib.pyplot as plt
 import yfinance as yf
 
-Telefonica = yf.Ticker("TEF")
-print(Telefonica.info) 
 
-# DESCARGA DATOS Y EXPORTA COMO CSV
-data_df = yf.download("TEF", start="2021-11-01", end="2021-11-27")
-data_df.to_csv('tef.csv')
+def yfinanceScraper(accion): 
+    Accion = yf.Ticker(accion)
+    print(Accion.info) 
 
-
-print('columna')
-columna=data_df['Close'][-2:]
-print(columna)
+    # DESCARGA DATOS Y EXPORTA COMO CSV
+    data_df = yf.download("TEF", start="2021-11-01", end="2021-11-27")
+    data_df.to_csv('yfinance.csv')
 
 
-print("Lista completa")
-print(data_df)
+    print('columna')
+    columna=data_df['Close']
+    print(columna)
 
-#OBJETIVO 2: COTIZACIONES MAXIMA Y MINIMA
-print('La cotización de mayor valor es: ')
-print(max(data_df['Close']))
 
-print('La cotización de menor valor es: ')
-print(max(data_df['Close']))
+    print("Lista completa")
+    print(data_df)
+
+    #OBJETIVO 2: COTIZACIONES MAXIMA Y MINIMA
+    print('La cotización de mayor valor es: ')
+    print(max(data_df['High']))
+
+    print('La cotización de menor valor es: ')
+    print(min(data_df['Low']))
+
+    columna.plot(grid=True)
+    plt.show()
+
+
+
+    return data_df
+
+
+
+
+print(yfinanceScraper("TEF"))
+
+
